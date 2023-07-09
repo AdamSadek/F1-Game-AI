@@ -2,19 +2,19 @@ import pygame
 import sys
 import math
 
-# Initialize Pygame
+# initialize pygame
 pygame.init()
 
-# window size (should make it 1920 by 1080) need to make decision before creating track
+# window size
 HEIGHT = 1920
 WIDTH = 1080
 
-# Define the colors
+# colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 
-# New track layout
+# new track layout - Lebanon GP
 track_layout = [
     (200, 210),
     (500, 210),
@@ -34,7 +34,7 @@ track_layout = [
     (200, 210)
 ]
 
-# Create the window
+# create window
 window = pygame.display.set_mode((HEIGHT, WIDTH))
 pygame.display.set_caption("F1 GAME AI")
 
@@ -48,7 +48,7 @@ while True:
 
     window.fill(WHITE)
 
-    # Draw the track
+    # this will draw the track
     pygame.draw.lines(window, BLACK, False, track_layout, 20)
 
 
