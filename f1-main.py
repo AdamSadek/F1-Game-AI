@@ -48,9 +48,9 @@ startingPos = [200,200]
 
 # creating drivers drivers
 drivers = [
-    Driver(RED, startingPos, 0.001),
-    Driver(BLUE, startingPos, 0.001),
-    Driver(GREEN, startingPos, 0.001)
+    Driver(RED, startingPos, 0.6),
+    Driver(BLUE, startingPos, 0.8),
+    Driver(GREEN, startingPos, 1)
 ]
 
 while True:
@@ -68,9 +68,8 @@ while True:
     # update and draw drivers when moving
     # driver1.draw(window)
     # driver2.draw(window) 
-    Movement.move(window, driver1, track_layout, startingPos)
+    Movement.move(window, drivers, track_layout, startingPos)
     # Movement.move(window, driver2, track_layout, startingPos)
-
 
     pygame.display.flip()
     clock.tick(60)
