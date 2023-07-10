@@ -2,19 +2,22 @@ import pygame
 import sys
 import math
 from drivers import Driver
+from movement import Movement
 
 # initialize pygame
 pygame.init()
 
 # window size
 HEIGHT = 1920
-WIDTH = 1080
+WIDTH  = 1080
 
 # colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-BLUE = (30, 144, 255)
+RED   = (255, 0, 0)
+BLUE  = (30, 144, 255)
+GREEN = (34, 139, 34)
+
 
 # new track layout - Lebanon GP
 track_layout = [
@@ -41,10 +44,14 @@ window = pygame.display.set_mode((HEIGHT, WIDTH))
 pygame.display.set_caption("F1 GAME AI")
 
 clock = pygame.time.Clock()
+startingPos = [200,200]
 
-# Create drivers
-driver1 = Driver(RED, track_layout[0], speed=2)
-driver2 = Driver(BLUE, track_layout[1], speed=3)
+# creating drivers drivers
+drivers = [
+    Driver(RED, startingPos, 0.6),
+    Driver(BLUE, startingPos, 0.8),
+    Driver(GREEN, startingPos, 1)
+]
 
 while True:
     for event in pygame.event.get():
@@ -58,11 +65,11 @@ while True:
     # draw the track outline
     pygame.draw.lines(window, BLACK, True, track_layout, 15)
 
-    # Update and draw drivers
-    # driver1.update()
-    driver1.draw(window)
-    # driver2.update()
-    driver2.draw(window)
+    # update and draw drivers when moving
+    # driver1.draw(window)
+    # driver2.draw(window) 
+    Movement.move(window, drivers, track_layout, startingPos)
+    # Movement.move(window, driver2, track_layout, startingPos)
 
     pygame.display.flip()
     clock.tick(60)
