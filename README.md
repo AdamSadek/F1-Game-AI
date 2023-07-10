@@ -2,10 +2,7 @@
 *Draft*
 
 A Formula 1 game AI 
-- This game will eventually have different F1 AI drivers that will have different speeds depending on how well they know the track.
-- Each laptime will be recorded, analyzed, and displayed on the right side of the screen with more data. (Ultimatly adding predictions as well based on some statistcs)
-- Might use elastic/kibana to store and visualize the data.
-- 
+In this game, players can look forward to the addition of various F1 AI drivers, each possessing unique speeds based on their track knowledge. As the game progresses, lap times will be meticulously recorded, analyzed, and conveniently displayed on the right side of the screen, accompanied by additional data. Furthermore, there are plans to incorporate predictive features, leveraging relevant statistics to offer insights and forecasts. To facilitate efficient storage and visualization of this data, I might utilize elastic/kibana, ensuring a seamless and immersive experience for players
 
 # How to Run
 Simply execute `python3 f1-main.py`
