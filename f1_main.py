@@ -1,6 +1,6 @@
-import pygame
+# pylint: disable=missing-module-docstring,missing-class-docstring,import-error
 import sys
-import math
+import pygame
 from drivers import Driver
 from movement import Movement
 
@@ -61,15 +61,11 @@ while True:
 
     window.fill(WHITE)
 
-
     # draw the track outline
     pygame.draw.lines(window, BLACK, True, track_layout, 15)
 
     # update and draw drivers when moving
-    # driver1.draw(window)
-    # driver2.draw(window) 
     Movement.move(window, drivers, track_layout, startingPos)
-    # Movement.move(window, driver2, track_layout, startingPos)
 
     pygame.display.flip()
     clock.tick(60)
