@@ -1,5 +1,5 @@
+# pylint: disable=missing-module-docstring,missing-class-docstring,import-error,missing-module-docstring,import-error
 import sys
-import math
 import pygame
 from drivers import Driver
 from movement import Movement
