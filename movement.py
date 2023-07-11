@@ -1,5 +1,5 @@
 # Need to remove some disables when code is more refined.
-# pylint: disable=too-many-statements,too-many-branches,too-many-nested-blocks,missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error,line-too-long
+# pylint: disable=chained-comparison,too-many-statements,too-many-branches,too-many-nested-blocks,missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error,line-too-long
 import pygame
 
 class Movement:
@@ -58,7 +58,6 @@ class Movement:
                 else:
                     print("prev x =", prevX)
                     print("next x =", nextX)
-                    
                     if posX != nextX:
                         if (prevX > nextX and posX <= nextX) or (prevX < nextX and posX >= nextX):
                             if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
