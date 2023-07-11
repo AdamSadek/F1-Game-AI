@@ -1,7 +1,5 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring
+# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-local-variables,no-member,too-few-public-methods
 import pygame
-import time
-import random
 
 class Movement:
     def move(surface, drivers, track_layout, startingPos):
@@ -32,20 +30,31 @@ class Movement:
                     directionY = -1
                 else:
                     directionY = 0
-            
+
                 driverPositions[i][0] += (directionX)
                 driverPositions[i][1] += (directionY)
                 print("Y direction: ", directionY)
                 print("driver: ", driver.color)
                 print("driver x: ",driverPositions[i][0])
                 print("driver y: ",driverPositions[i][1])
-            
-                # this will clear the surface before it draws, this way there won't be the red line bug.    
+
+                # this will clear the surface before it draws,
+                # this way there won't be the red line bug.
                 surface.fill(WHITE)
                 # drawing track
-                pygame.draw.lines(surface, BLACK, True, track_layout, 15)  
+                pygame.draw.lines(
+                    surface, 
+                    BLACK,
+                    True,
+                    track_layout,
+                    15)  
                 # drawing driver
-                pygame.draw.circle(surface, driver.color, (int(driverPositions[i][0]), int(driverPositions[i][1])), 5)
+                pygame.draw.circle(
+                    surface,
+                    driver.color,
+                    (int(driverPositions[i][0]),
+                    int(driverPositions[i][1])),
+                    5)
                 # updates the full display surface to the screen
                 pygame.display.flip()
                 # move to next turn on the track
