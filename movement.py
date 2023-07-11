@@ -1,4 +1,4 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error
+# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error,line-too-long
 import pygame
 
 class Movement:
@@ -7,12 +7,12 @@ class Movement:
         WHITE = (255, 255, 255)
         BLACK = (0, 0, 0)
         turnNum = 1
-        # creating separate position for each driver
+        # create a separate position for each driver
         driverPositions = [startingPos.copy() for _ in drivers]
 
         while turnNum < len(track_layout):
             for i, driver in enumerate(drivers):
-                nextX, nextY = track_layout[turnNum]
+                nextX, nextY = track_layout[driver.turnNum]
                 # distX = nextX - startingPos[0]
                 # distY = nextY - startingPos[1]
                 distX = nextX - driverPositions[i][0]
@@ -31,33 +31,25 @@ class Movement:
                 else:
                     directionY = 0
 
-                driverPositions[i][0] += (directionX)
-                driverPositions[i][1] += (directionY)
+                driverPositions[i][0] += directionX * driver.speed
+                driverPositions[i][1] += directionY * driver.speed
                 print("Y direction: ", directionY)
                 print("driver: ", driver.color)
-                print("driver x: ",driverPositions[i][0])
-                print("driver y: ",driverPositions[i][1])
+                print("driver x: ",int(driverPositions[i][0]))
+                print("driver y: ",int(driverPositions[i][1]))
 
-                # this will clear the surface before it draws,
-                # this way there won't be the red line bug.
+                # this will clear the surface before it draws, this way there won't be the red line bug.
                 surface.fill(WHITE)
                 # drawing track
-                pygame.draw.lines(
-                    surface,
-                    BLACK,
-                    True,
-                    track_layout,
-                    15)
+                pygame.draw.lines(surface, BLACK, True, track_layout, 15)
                 # drawing driver
-                pygame.draw.circle(
-                    surface,
-                    driver.color,
-                    (int(driverPositions[i][0]),
-                    int(driverPositions[i][1])),
-                    5)
+                pygame.draw.circle(surface, driver.color, (int(driverPositions[i][0]), int(driverPositions[i][1])), 5)
                 # updates the full display surface to the screen
                 pygame.display.flip()
+
+                if (int(driverPositions[i][0]) == nextX or int(driverPositions[i][0]) == nextX - 1) and (int(driverPositions[i][1]) == nextY or int(driverPositions[i][1]) == nextY - 1):
+                    driver.turnNum += 1
                 # move to next turn on the track
-                if all(driverPositions[i][0] == nextX
-                   and driverPositions[i][1] == nextY for i in range(len(drivers))):
+                if all(int(driverPositions[i][0]) == nextX
+                   and int(driverPositions[i][1]) == nextY for i in range(len(drivers))):
                     turnNum += 1

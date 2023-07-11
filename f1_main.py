@@ -1,4 +1,4 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring,import-error
+# pylint: disable=missing-module-docstring,missing-class-docstring,import-error,missing-module-docstring,import-error
 import sys
 import pygame
 from drivers import Driver
@@ -48,9 +48,9 @@ startingPos = [200,200]
 
 # creating drivers drivers
 drivers = [
-    Driver(RED, startingPos, 0.6),
-    Driver(BLUE, startingPos, 0.8),
-    Driver(GREEN, startingPos, 1)
+    Driver(RED, startingPos, 0.6, 1),
+    Driver(BLUE, startingPos, 0.8, 1),
+    Driver(GREEN, startingPos, 1, 1)
 ]
 
 while True:
