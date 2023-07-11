@@ -50,10 +50,10 @@ startingPos = [200,200]
 drivers = [
     Driver(RED, startingPos, 2, 1),
     Driver(BLUE, startingPos, 1, 1),
-    Driver(GREEN, startingPos, 3, 1),
+    Driver(GREEN, startingPos, 6, 1),
     Driver((150,8,111), startingPos, 4, 1),
     Driver((100,230,200), startingPos, 5, 1),
-    Driver((91,230,41), startingPos, 7, 1)
+    Driver((91,230,41), startingPos, 8, 1)
 ]
 
 while True:

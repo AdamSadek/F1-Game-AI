@@ -51,41 +51,22 @@ class Movement:
 
                 print("driver speed = ", int(driverSpeedX))
                 print("next = ", int(nextX))
-                if int(driverPositions[i][0]) == nextX and int(driverPositions[i][1]) == nextY:
+                posX, posY = map(int, driverPositions[i])
+
+                if posX == nextX and posY == nextY:
                     driver.turnNum += 1
                 else:
-                    print("prev x = ", prevX)
-                    print("next x = ", nextX)
-                    if int(driverPositions[i][0]) != nextX:
-                        if prevX - nextX > 0:
-                            if int(driverPositions[i][0]) <= nextX:
-                                if prevY - nextY > 0:
-                                    if int(driverPositions[i][1]) <= nextY:
-                                        driver.turnNum += 1
-                                elif prevY - nextY < 0:
-                                    if int(driverPositions[i][1]) >= nextY:
-                                        driver.turnNum += 1
-                                else:
-                                    driver.turnNum += 1
-                        elif prevX - nextX < 0:
-                            if int(driverPositions[i][0]) >= nextX:
-                                if prevY - nextY > 0:
-                                    if int(driverPositions[i][1]) <= nextY:
-                                        driver.turnNum += 1
-                                elif prevY - nextY < 0:
-                                    if int(driverPositions[i][1]) >= nextY:
-                                        driver.turnNum += 1
-                                else:
-                                    driver.turnNum += 1
+                    print("prev x =", prevX)
+                    print("next x =", nextX)
+                    
+                    if posX != nextX:
+                        if (prevX > nextX and posX <= nextX) or (prevX < nextX and posX >= nextX):
+                            if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
+                                driver.turnNum += 1
                     else:
-                        if prevY - nextY > 0:
-                            if int(driverPositions[i][1]) <= nextY:
-                                driver.turnNum += 1
-                        elif prevY - nextY < 0:
-                            if int(driverPositions[i][1]) >= nextY:
-                                driver.turnNum += 1
-                        else:
+                        if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
                             driver.turnNum += 1
+
 
                 # move to next turn on the track
                 # if all(int(driverPositions[i][0]) == nextX
