@@ -1,5 +1,4 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,
-# too-few-public-methods,no-self-argument,missing-function-docstring,import-error
+# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error
 import pygame
 
 class Movement:
@@ -44,11 +43,11 @@ class Movement:
                 surface.fill(WHITE)
                 # drawing track
                 pygame.draw.lines(
-                    surface, 
+                    surface,
                     BLACK,
                     True,
                     track_layout,
-                    15)  
+                    15)
                 # drawing driver
                 pygame.draw.circle(
                     surface,
@@ -59,6 +58,6 @@ class Movement:
                 # updates the full display surface to the screen
                 pygame.display.flip()
                 # move to next turn on the track
-                if all(driverPositions[i][0] == nextX 
+                if all(driverPositions[i][0] == nextX
                    and driverPositions[i][1] == nextY for i in range(len(drivers))):
                     turnNum += 1
