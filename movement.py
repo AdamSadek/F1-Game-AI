@@ -1,4 +1,5 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-local-variables,no-member,too-few-public-methods
+# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,
+# too-few-public-methods,no-self-argument,missing-function-docstring,import-error
 import pygame
 
 class Movement:
