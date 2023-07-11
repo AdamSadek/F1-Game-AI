@@ -1,11 +1,12 @@
-# pylint: disable=missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error,line-too-long
+# Need to remove some disables when code is more refined.
+# pylint: disable=too-many-statement,too-many-branches,too-many-nested-blocks,missing-module-docstring,missing-class-docstring,invalid-name,too-many-locals,no-member,too-few-public-methods,no-self-argument,missing-function-docstring,import-error,line-too-long
 import pygame
 
 class Movement:
     def move(surface, drivers, track_layout, startingPos):
         # some colors :)
-        WHITE = (255, 255, 255)
-        BLACK = (0, 0, 0)
+        # WHITE = (255, 255, 255)
+        # BLACK = (0, 0, 0)
         turnNum = 1
         # create a separate position for each driver
         driverPositions = [startingPos.copy() for _ in drivers]
