@@ -1,3 +1,4 @@
+# pylint: disable=missing-module-docstring,missing-class-docstring,import-error
 import sys
 import pygame
 from drivers import Driver
