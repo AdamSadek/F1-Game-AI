@@ -8,15 +8,23 @@ class Movement:
         # WHITE = (255, 255, 255)
         # BLACK = (0, 0, 0)
         turnNum = 1
+        maxDiff = 9
+        totalLapsDone = 0
         # create a separate position for each driver
         driverPositions = [startingPos.copy() for _ in drivers]
-        prevX, prevY = startingPos.copy()
-        while turnNum < len(track_layout):
+        while totalLapsDone != 3:
+            lapsDone = set()
             for i, driver in enumerate(drivers):
-                prevX, prevY = track_layout[driver.turnNum-1]
+                # check if all drivers have finished a lap
+                if len(lapsDone) == len(drivers):
+                    totalLapsDone += 1
+                if driver.turnNum == len(track_layout):
+                    driver.lapsDone += 1
+                    driver.turnNum = 1
+                    turnNum += 1
+                    lapsDone.add(i)
+                print("driver turn num = ", driver.turnNum)
                 nextX, nextY = track_layout[driver.turnNum]
-                # distX = nextX - startingPos[0]
-                # distY = nextY - startingPos[1]
                 distX = nextX - driverPositions[i][0]
                 distY = nextY - driverPositions[i][1]
                 if distX > 0:
@@ -38,6 +46,7 @@ class Movement:
 
                 driverPositions[i][0] += driverSpeedX
                 driverPositions[i][1] += driverSpeedY
+
                 print("driver: ", driver.color)
                 print("driver x: ",int(driverPositions[i][0]))
                 print("driver y: ",int(driverPositions[i][1]))
@@ -49,22 +58,32 @@ class Movement:
                 # updates the full display surface to the screen
                 pygame.display.flip()
 
-                print("driver speed = ", int(driverSpeedX))
-                print("next = ", int(nextX))
+                print("next x = ", int(nextX))
+                print("next y = ", int(nextY))
                 posX, posY = map(int, driverPositions[i])
 
-                if posX == nextX and posY == nextY:
+                diffX = abs(posX - nextX)
+                diffY = abs(posY - nextY)
+
+                print("diff x = ", diffX)
+                print("diff y = ", diffY)
+
+                # print("difference x = ", diffX, "\n", "difference x minus current pos = ", posX - diffX)
+                if (diffX <= maxDiff) and (diffY <= maxDiff):
                     driver.turnNum += 1
-                else:
-                    print("prev x =", prevX)
-                    print("next x =", nextX)
-                    if posX != nextX:
-                        if (prevX > nextX and posX <= nextX) or (prevX < nextX and posX >= nextX):
-                            if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
-                                driver.turnNum += 1
-                    else:
-                        if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
-                            driver.turnNum += 1
+
+                # if posX == nextX and posY == nextY:
+                #     driver.turnNum += 1
+                # else:
+                #     print("driver speed =", driverSpeedX, " ", driverSpeedY)
+                #     if posX != nextX:
+                #         print("minus speed x = ", abs(driverSpeedX - posX))
+                #         if (prevX > nextX and posX <= nextX) or (prevX < nextX and posX >= nextX):
+                #             if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
+                #                 driver.turnNum += 1
+                #     else:
+                #         if (prevY - nextY > 0 and posY <= nextY) or (prevY - nextY < 0 and posY >= nextY):
+                #             driver.turnNum += 1
 
 
                 # move to next turn on the track
