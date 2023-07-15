@@ -58,7 +58,7 @@ class Movement:
                 # updates the full display surface to the screen
                 pygame.display.flip()
 
-                # getting current position (might not need this really) 
+                # getting current position (might not need this really)
                 posX, posY = map(int, driverPositions[i])
 
                 # getting the difference between the drivers position and the next position.
