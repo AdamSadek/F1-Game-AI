@@ -48,12 +48,12 @@ startingPos = [200,200]
 
 # creating drivers drivers
 drivers = [
-    # Driver(RED, startingPos, 2, 1, 0),
-    # Driver(BLUE, startingPos, 1, 1, 0),
-    # Driver(GREEN, startingPos, 3, 1, 0),
-    # Driver((150,8,111), startingPos, 4, 1, 0),
-    # Driver((100,230,200), startingPos, 5, 1, 0),
-    Driver((91,230,41), startingPos, 10, 1, 0)
+    Driver(RED, startingPos, 2, 1, 0),
+    Driver(BLUE, startingPos, 1, 1, 0),
+    Driver(GREEN, startingPos, 3, 1, 0),
+    Driver((150,8,111), startingPos, 4, 1, 0),
+    Driver((100,230,200), startingPos, 5, 1, 0),
+    Driver((91,230,41), startingPos, 6, 1, 0)
 ]
 
 while True:
