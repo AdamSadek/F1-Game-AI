@@ -48,9 +48,12 @@ startingPos = [200,200]
 
 # creating drivers drivers
 drivers = [
-    Driver(RED, startingPos, 0.6, 1),
-    Driver(BLUE, startingPos, 0.8, 1),
-    Driver(GREEN, startingPos, 1, 1)
+    Driver(RED, startingPos, 2, 1, 0),
+    Driver(BLUE, startingPos, 1, 1, 0),
+    Driver(GREEN, startingPos, 3, 1, 0),
+    Driver((150,8,111), startingPos, 4, 1, 0),
+    Driver((100,230,200), startingPos, 5, 1, 0),
+    Driver((91,230,41), startingPos, 6, 1, 0)
 ]
 
 while True:
@@ -61,7 +64,7 @@ while True:
 
     window.fill(WHITE)
 
-    # draw the track outline
+    # drawing track
     pygame.draw.lines(window, BLACK, True, track_layout, 15)
 
     # update and draw drivers when moving
